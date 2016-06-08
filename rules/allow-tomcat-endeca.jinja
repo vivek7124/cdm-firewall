@@ -1,0 +1,10 @@
+resources:
+- name: allow-tomcat-endeca
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["tomcat"]
+    targetTags: ["endeca"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 15000 ]

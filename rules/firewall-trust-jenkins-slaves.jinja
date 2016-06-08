@@ -1,0 +1,12 @@
+resources:
+- name: {{ env["name"] }}
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceRanges:
+    - 104.196.13.6/32 # jenkins-slave-hd-www-dev
+    - 104.196.45.188/32 # jenkins-slave-hd-www-stage
+    - 104.196.98.175/32 # cicd-runner-hd-www-dev
+    - 104.196.23.216/32 # cicd-runner-hd-www-stage
+    {% if properties["targetTags"] %}targetTags: {{ properties["targetTags"] }}{% endif %}
+    allowed: {{ properties["allowed"] }}

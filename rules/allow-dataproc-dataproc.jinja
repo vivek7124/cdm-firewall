@@ -1,0 +1,12 @@
+resources:
+- name: allow-dataproc-dataproc
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["dataproc"]
+    targetTags: ["dataproc"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 1-65535 ]
+      - IPProtocol: UDP
+        ports: [  1-65535 ]

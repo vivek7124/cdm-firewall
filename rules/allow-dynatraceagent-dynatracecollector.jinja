@@ -1,0 +1,10 @@
+resources:
+- name: allow-dynatraceagent-dynatracecollector
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["dynatraceagent","spring-boot"]
+    targetTags: ["dynatracecollector"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 9998 ]

@@ -1,0 +1,10 @@
+resources:
+- name: allow-varnish-spring-boot
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["varnish"]
+    targetTags: ["spring-boot"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 8080 ]

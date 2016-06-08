@@ -1,0 +1,10 @@
+resources:
+- name: allow-springboot-springboot
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["spring-boot"]
+    targetTags: ["spring-boot"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 8080 ]

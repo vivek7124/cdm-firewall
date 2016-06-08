@@ -1,0 +1,17 @@
+info:
+  title: Allow Dynatrace Agent Dynatrace Collector Rule
+  author: John McKenna
+  description: Creates a firewall rule to allows Dynatrace agents to reach the Dynatrace collectors.
+  version: 1.0
+
+imports:
+- name: firewall.jinja
+  path: ../cdm-templates/resources/firewall.jinja
+
+required:
+- network
+
+network:
+  type: string
+  default: internal
+  description: The network in the Google Cloud project that rule will apply to.

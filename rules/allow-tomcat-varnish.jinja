@@ -1,0 +1,10 @@
+resources:
+- name: allow-tomcat-varnish
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["tomcat"]
+    targetTags: ["varnish"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 9005 ]

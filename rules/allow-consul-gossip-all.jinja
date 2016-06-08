@@ -1,0 +1,13 @@
+resources:
+- name: allow-consul-gossip-all
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["tomcat", "consul-server", "automation", "frontend", "varnish", "endeca", "spring-boot", "cassandra", "cassandra-opscenter", "dynatracecollector", "dynatraceserver", "postgres"]
+    targetTags: ["tomcat", "consul-server", "automation", "frontend", "varnish", "endeca", "spring-boot", "cassandra", "cassandra-opscenter", "dynatracecollector", "dynatraceserver", "postgres"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 8301 ]
+      - IPProtocol: UDP
+        ports: [ 8301 ]
+      - IPProtocol: ICMP

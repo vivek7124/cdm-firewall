@@ -1,0 +1,9 @@
+resources:
+- name: thd-access-cassandra
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceRanges: ["172.22.32.0/19","151.140.142.0/23","172.19.0.0/16","172.16.34.0/23","172.16.44.0/22","172.16.31.0/24"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 9042 ]

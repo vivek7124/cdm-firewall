@@ -1,0 +1,20 @@
+resources:
+- name: allow-tagged-all
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags:
+    - tomcat
+    - consul-server
+    - automation
+    - frontend
+    - varnish
+    - endeca
+    - spring-boot
+    - cassandra
+    allowed:
+    - IPProtocol: TCP
+      ports: [ 1-65535 ]
+    - IPProtocol: UDP
+      ports: [ 1-65535 ]
+

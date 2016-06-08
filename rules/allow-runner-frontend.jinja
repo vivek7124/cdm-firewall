@@ -1,0 +1,10 @@
+resources:
+- name: allow-runner-frontend
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["runner"]
+    targetTags: ["frontend"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 80 ]

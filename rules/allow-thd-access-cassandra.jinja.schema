@@ -1,0 +1,17 @@
+info:
+  title: Allow THD access to Developers
+  author: Chandramohan Ashok
+  description: Allow developer access to Cassandra clusters in hd-www-dev
+  version: 1.0
+
+imports:
+- name: firewall.jinja
+  path: ../cdm-templates/resources/firewall.jinja
+
+required:
+- network
+
+network:
+  type: string
+  default: internal
+  description: Developer access to Cassandra clusters in hd-www-dev

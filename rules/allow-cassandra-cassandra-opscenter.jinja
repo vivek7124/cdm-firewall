@@ -1,0 +1,10 @@
+resources:
+- name: allow-cassandra-cassandra-opscenter
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["cassandra","cassandra-opscenter"]
+    targetTags: ["cassandra-opscenter","cassandra"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 61620-61621 ]

@@ -1,0 +1,11 @@
+resources:
+- name: allow-thd-https-admin-app
+  type: rules/firewall-trust-thd.jinja
+  properties:
+    network: internal
+    allowed:
+      - IPProtocol: TCP
+        ports:
+        - 443
+    targetTags:
+      - admin-app

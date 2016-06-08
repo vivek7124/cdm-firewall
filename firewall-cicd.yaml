@@ -1,0 +1,30 @@
+imports:
+- name: hd-build-firewall.jinja
+  path: hd-build-firewall.jinja
+- name: firewall.jinja
+  path: cdm-templates/resources/firewall.jinja
+- name: firewall-trust-gcp.jinja
+  path: rules/firewall-trust-gcp.jinja
+- name: firewall-trust-jenkins-slaves.jinja
+  path: rules/firewall-trust-jenkins-slaves.jinja
+- name: firewall-trust-stackdriver.jinja
+  path: rules/firewall-trust-stackdriver.jinja
+- name: firewall-trust-thd.jinja
+  path: rules/firewall-trust-thd.jinja
+- name: allow-thd-ssh-jenkins.jinja
+  path: rules/allow-thd-ssh-jenkins.jinja
+- name: firewall-trust-jenkins-masters.jinja
+  path: rules/firewall-trust-jenkins-masters.jinja
+- name: allow-thd-ssh-jenkins.jinja
+  path: rules/allow-thd-ssh-jenkins.jinja
+- name: allow-tagged-ssh-gitlab.jinja
+  path: rules/allow-tagged-ssh-gitlab.jinja
+- name: allow-thd-ssh-all.jinja
+  path: rules/allow-thd-ssh-all.jinja
+
+resources:
+- name: cicd-firewall
+  type: hd-build-firewall.jinja
+  properties:
+    network: cicd
+

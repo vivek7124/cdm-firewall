@@ -1,0 +1,14 @@
+resources:
+- name: allow-tagged-ssh-gitlab
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags:
+    - jenkins-master
+    - jenkins-slave
+    targetTags:
+    - gitlab
+    allowed:
+    - IPProtocol: TCP
+      ports: [ 22 ]
+

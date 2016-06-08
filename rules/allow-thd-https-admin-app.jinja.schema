@@ -1,0 +1,19 @@
+info:
+  title: Allow THD HTTP All Rule
+  author: Priyesh Patel
+  description: Creates a firewall rule to allow THD's IP space to HTTP and HTTPS to instances.
+  version: 1.0
+
+imports:
+- name: firewall.jinja
+  path: ../cdm-templates/resources/firewall.jinja
+- name: rules/firewall-trust-thd.jinja
+  path: firewall-trust-thd.jinja
+
+required:
+- network
+
+network:
+  type: string
+  default: internal
+  description: The network in the Google Cloud project that rule will apply to.

@@ -1,0 +1,12 @@
+resources:
+- name: allow-dynatracecollector-dynatraceserver
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["dynatracecollector"]
+    targetTags: ["dynatraceserver"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 6698 ]
+      - IPProtocol: TCP
+        ports: [ 8020 ]

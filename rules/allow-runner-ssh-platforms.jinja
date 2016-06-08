@@ -1,0 +1,10 @@
+resources:
+- name: allow-runner-ssh-platforms
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["runner"]
+    targetTags: ["tomcat","consul-server","automation","frontend","varnish","endeca","spring-boot","cassandra"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 22 ]

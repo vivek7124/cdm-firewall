@@ -1,0 +1,10 @@
+resources:
+- name: allow-thd-dynatraceserver
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceRanges: ["207.11.0.0/17","165.130.0.0/16", "151.140.0.0/16"]
+    targetTags: ["dynatraceserver"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 80 ]

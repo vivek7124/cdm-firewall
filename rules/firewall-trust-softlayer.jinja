@@ -1,0 +1,10 @@
+resources:
+- name: {{ env["name"] }}
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceRanges:
+    # Softlayer
+    - 75.126.0.0/16
+    {% if properties["targetTags"] %}targetTags: {{ properties["targetTags"] }}{% endif %}
+    allowed: {{ properties["allowed"] }}

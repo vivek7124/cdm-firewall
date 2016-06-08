@@ -1,0 +1,10 @@
+resources:
+- name: allow-thd-ssh-jenkins
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    targetTags: ["jenkins-slave"]
+    sourceRanges: ["104.197.111.81/32"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 22 ]

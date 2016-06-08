@@ -1,0 +1,10 @@
+resources:
+- name: allow-frontend-varnish
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["frontend"]
+    targetTags: ["varnish"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 9005 ]

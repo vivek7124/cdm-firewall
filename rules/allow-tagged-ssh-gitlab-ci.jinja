@@ -1,0 +1,12 @@
+resources:
+- name: allow-tagged-ssh-gitlab-ci
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags:
+    - runner
+    targetTags:
+    - ci-test-instance
+    allowed:
+    - IPProtocol: TCP
+      ports: [ 22 ]

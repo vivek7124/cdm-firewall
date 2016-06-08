@@ -1,0 +1,191 @@
+imports:
+- path: rules/allow-all-consul-server.jinja
+- path: rules/allow-consul-all.jinja
+- path: rules/allow-consul-gossip-all.jinja
+- path: rules/allow-frontend-varnish.jinja
+- path: rules/allow-varnish-tomcat.jinja
+- path: rules/allow-tomcat-endeca.jinja
+- path: rules/allow-dynatraceserver-dynatracedb.jinja
+- path: rules/allow-dynatracecollector-dynatraceserver.jinja
+- path: rules/allow-dynatraceagent-dynatracecollector.jinja
+- path: rules/allow-thd-dynatraceserver.jinja
+- path: rules/allow-thd-cassandra-opscenter.jinja
+- path: rules/allow-cassandra-cassandra-opscenter.jinja
+- path: rules/allow-cassandra-cassandra.jinja
+- path: rules/allow-app-cassandra.jinja
+- path: rules/allow-lb-frontend.jinja
+- path: rules/allow-lb-spring-boot-frontend.jinja
+- path: rules/allow-google-ssh-all.jinja
+- path: rules/allow-thd-ssh-all.jinja
+- path: rules/allow-thd-ssh-jenkins.jinja
+- path: rules/allow-qualys-all.jinja
+- path: rules/allow-springboot-springboot.jinja
+- path: rules/allow-frontend-springboot.jinja
+- path: rules/allow-frontend-tomcat.jinja
+- path: rules/allow-runner-frontend.jinja
+- path: rules/allow-runner-ssh-platforms.jinja
+- path: rules/allow-varnish-spring-boot.jinja
+- path: rules/firewall-trust-thd.jinja
+- path: rules/allow-spring-boot-varnish.jinja
+- path: rules/allow-tomcat-varnish.jinja
+
+resources:
+- name: allow-all-consul-server
+  type: rules/allow-all-consul-server.jinja
+  properties:
+    network: internal
+
+- name: allow-consul-all
+  type: rules/allow-consul-all.jinja
+  properties:
+    network: internal
+
+- name: allow-consul-gossip-all
+  type: rules/allow-consul-gossip-all.jinja
+  properties:
+    network: internal
+
+- name: allow-frontend-varnish
+  type: rules/allow-frontend-varnish.jinja
+  properties:
+    network: internal
+
+- name: allow-varnish-tomcat
+  type: rules/allow-varnish-tomcat.jinja
+  properties:
+    network: internal
+
+- name: allow-varnish-spring-boot
+  type: rules/allow-varnish-spring-boot.jinja
+  properties:
+    network: internal
+
+- name: allow-tomcat-endeca
+  type: rules/allow-tomcat-endeca.jinja
+  properties:
+    network: internal
+
+#Dynatrace Firewall Rules
+- name: allow-dynatraceserver-dynatracedb
+  type: rules/allow-dynatraceserver-dynatracedb.jinja
+  properties:
+    network: internal
+
+- name: allow-dynatracecollector-dynatraceserver
+  type: rules/allow-dynatracecollector-dynatraceserver.jinja
+  properties:
+    network: internal
+
+- name: allow-dynatraceagent-dynatracecollector
+  type: rules/allow-dynatraceagent-dynatracecollector.jinja
+  properties:
+    network: internal
+
+- name: allow-thd-dynatraceserver
+  type: rules/allow-thd-dynatraceserver.jinja
+  properties:
+    network: internal
+
+- name: allow-springboot-springboot
+  type: rules/allow-springboot-springboot.jinja
+  properties:
+    network: internal
+
+- name: allow-spring-boot-varnish
+  type: rules/allow-spring-boot-varnish.jinja
+  properties:
+    network: internal
+
+- name: allow-tomcat-varnish
+  type: rules/allow-tomcat-varnish.jinja
+  properties:
+    network: internal
+
+- name: allow-frontend-springboot
+  type: rules/allow-frontend-springboot.jinja
+  properties:
+    network: internal
+
+- name: allow-frontend-tomcat
+  type: rules/allow-frontend-tomcat.jinja
+  properties:
+    network: internal
+
+#Cassandra Firewall Rules
+- name: allow-thd-cassandra-opscenter
+  type: rules/allow-thd-cassandra-opscenter.jinja
+  properties:
+    network: internal
+
+- name: allow-cassandra-cassandra-opscenter
+  type: rules/allow-cassandra-cassandra-opscenter.jinja
+  properties:
+    network: internal
+
+- name: allow-cassandra-cassandra
+  type: rules/allow-cassandra-cassandra.jinja
+  properties:
+    network: internal
+
+- name: allow-app-cassandra
+  type: rules/allow-app-cassandra.jinja
+  properties:
+    network: internal
+
+#Load Balancer to nginx frontend
+- name: allow-lb-frontend
+  type: rules/allow-lb-frontend.jinja
+  properties:
+    network: internal
+
+#Load Balancer to Spring Boot Frontend
+- name: allow-lb-spring-boot-frontend
+  type: rules/allow-lb-spring-boot-frontend.jinja
+  properties:
+    network: internal
+
+#SSH Rules from Google, THD, and Jenkins IPs
+- name: allow-google-ssh-all
+  type: rules/allow-google-ssh-all.jinja
+  properties:
+    network: internal
+
+- name: allow-thd-ssh-all
+  type: rules/allow-thd-ssh-all.jinja
+  properties:
+    network: internal
+
+- name: allow-thd-ssh-jenkins
+  type: rules/allow-thd-ssh-jenkins.jinja
+  properties:
+    network: internal
+
+#Allow all Qualys scanners to all IPs
+- name: allow-qualys-all
+  type: rules/allow-qualys-all.jinja
+  properties:
+    network: internal
+
+#GitLab runner to nginx frontend
+- name: allow-runner-frontend
+  type: rules/allow-runner-frontend.jinja
+  properties:
+    network: internal
+
+#GitLab runner to ssh differnt deployed platforms
+- name: allow-runner-ssh-platforms
+  type: rules/allow-runner-ssh-platforms.jinja
+  properties:
+    network: internal
+
+- name: allow-trusted-reporting-thd
+  type: rules/firewall-trust-thd.jinja
+  properties:
+    network: internal
+    allowed:
+      - IPProtocol: TCP
+        ports:
+          - 80
+          - 443
+    targetTags:
+      - reporting

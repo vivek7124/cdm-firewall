@@ -1,0 +1,10 @@
+resources:
+- name: allow-app-cassandra
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["spring-boot", "tomcat"]
+    targetTags: ["cassandra"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 9042 ]

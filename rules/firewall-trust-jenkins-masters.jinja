@@ -1,0 +1,9 @@
+resources:
+- name: {{ env["name"] }}
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceRanges:
+    - 104.197.111.81/32
+    {% if properties["targetTags"] %}targetTags: {{ properties["targetTags"] }}{% endif %}
+    allowed: {{ properties["allowed"] }}

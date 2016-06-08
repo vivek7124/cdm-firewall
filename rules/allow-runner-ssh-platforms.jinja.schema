@@ -1,0 +1,17 @@
+info:
+  title: Allow GitLab Runner to Nginx Frontend Rule
+  author: Nick Bunn
+  description: Creates a firewall rule to allow GitLab runners to ssh into our differnt services. This gives hammer the ability to enable maintenance mode for consul
+  version: 1.0
+
+imports:
+- name: firewall.jinja
+  path: ../cdm-templates/resources/firewall.jinja
+
+required:
+- network
+
+network:
+  type: string
+  default: internal
+  description: The network in the Google Cloud project that rule will apply to.

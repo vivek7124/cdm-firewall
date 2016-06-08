@@ -1,0 +1,23 @@
+imports:
+- name: firewall.jinja
+  path: ../cdm-templates/resources/firewall.jinja
+
+resources:
+- name: allow-trusted-ssh-gitlab
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceRanges:
+    - 104.196.13.6/32 # jenkins-slave-hd-www-dev
+    - 104.196.45.188/32 # jenkins-slave-hd-www-stage
+    - 104.196.98.175/32 # cicd-runner-hd-www-dev
+    - 104.196.23.216/32 # cicd-runner-hd-www-stage
+    - 104.196.97.169/32 # cicd-runner-hd-engineering
+    - 104.196.99.58/32  # cicd-runner-hd-engineering-dev
+    - 104.196.16.190/32  # cicd-runner-hd-build
+    targetTags:
+    - gitlab
+    allowed:
+    - IPProtocol: TCP
+      ports: [ 22 ]
+

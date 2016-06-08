@@ -1,0 +1,10 @@
+resources:
+- name: allow-dynatraceserver-dynatracedb
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["dynatraceserver"]
+    targetTags: ["dynatracedb"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 5432 ]

@@ -1,0 +1,14 @@
+resources:
+- name: allow-ssh-jenkins-slaves
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    targetRanges:
+    - 104.197.70.4/32 # hd-build-image1-slave
+    - 130.211.115.158/32 : hd-engineering-olt-jenkins-slave
+    sourceTags:
+    - jenkins-master
+    - jenkins-slave
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 22 ]

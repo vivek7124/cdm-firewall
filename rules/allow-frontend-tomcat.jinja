@@ -1,0 +1,10 @@
+resources:
+- name: allow-frontend-tomcat
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["frontend"]
+    targetTags: ["tomcat"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 8080 ]

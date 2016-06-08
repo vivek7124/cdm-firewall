@@ -1,0 +1,16 @@
+resources:
+- name: allow-consul-all
+  type: firewall.jinja
+  properties:
+    network: {{ properties["network"] }}
+    sourceTags: ["consul-server", "automation"]
+    targetTags: ["tomcat", "consul-server", "automation", "frontend", "varnish", "endeca", "spring-boot", "cassandra", "cassandra-opscenter", "dynatraceserver", "dynatracecollector", "postgres"]
+    allowed:
+      - IPProtocol: TCP
+        ports: [ 8300 ]
+      - IPProtocol: TCP
+        ports: [ 8400 ]
+      - IPProtocol: TCP
+        ports: [ 8500 ]
+      - IPProtocol: TCP
+        ports: [ 8600 ]
